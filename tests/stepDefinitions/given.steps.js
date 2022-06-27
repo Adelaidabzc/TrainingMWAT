@@ -1,28 +1,42 @@
 const {Given} = require("@cucumber/cucumber");
 
-const GooglePage = require('./../pages/google.page');
+const LoginPage = require('./../pages/login.page');
 
-const googlePage = new GooglePage();
+const loginPage = new LoginPage();
 
-const CelsiusToFahrenheitConvertorPage = require('./../pages/celsiusToFahrenheitConvertor.page');
+const SignUpPage = require('./../pages/signup.page');
 
-const celsiusToFahrenheitConvertorPage = new CelsiusToFahrenheitConvertorPage();
+const signUpPage = new SignUpPage();
 
 const SettingsPage = require('./../pages/settings.page');
 
 const settingsPage = new SettingsPage();
 
-// @androidBrowser @iosBrowser
-Given(/^I launch the google$/, () => {
-    googlePage.launchGoogle('https://www.google.hn/');
-});
 
 // @androidApp
-Given(/^I launch the app$/, async () => {
-    await celsiusToFahrenheitConvertorPage.launchApp();
+Given(/^I launch the NYA app$/, async () => {
+    await loginPage.launchApp();
 });
 
 // @iosApp
 Given(/^I launch the settings app of iphone$/, async () => {
     await settingsPage.launchApp();
 });
+
+// @androidApp
+Given(/^Im on the (\w+) page$/, async (page) => {
+    
+    switch (page) {
+        case 'login':
+            await loginPage.launchApp();
+            break;
+        case 'signup':
+            await signUpPage.launchApp();
+            await signUpPage.goToSignUp();
+            break;
+    
+        default:
+            break;
+    }
+});
+

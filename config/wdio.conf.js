@@ -2,7 +2,7 @@
 const defaultTimeoutInterval = process.env.DEBUG ? (24 * 60 * 60 * 1000) : 60000
 
 const apps = {
-  android: 'CelsiusFahrenheitConverter_v1.0.1_apkpure.com.apk',
+  android: 'nya-qa-release.apk',
   ios: 'PROD6.8.2.ipa'
 }
 
@@ -25,7 +25,8 @@ exports.config = {
   // Runner and framework Configuration
 
   specs: [
-    './tests/features/sampleTest.feature'
+    './tests/features/login.feature',
+    './tests/features/signup.feature',
   ],
 
   logLevel: 'debug',

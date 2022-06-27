@@ -1,28 +1,27 @@
 const {Then} = require("@cucumber/cucumber");
 
-const GooglePage = require('./../pages/google.page');
-
-const googlePage = new GooglePage();
-
-const CelsiusToFahrenheitConvertorPage = require('./../pages/celsiusToFahrenheitConvertor.page');
-
-const celsiusToFahrenheitConvertorPage = new CelsiusToFahrenheitConvertorPage();
-
 const SettingsPage = require('./../pages/settings.page');
 
 const settingsPage = new SettingsPage();
 
+const SignUpPage = require('./../pages/signup.page');
+
+const signUpPage = new SignUpPage();
+
+const LoginPage = require('./../pages/login.page');
+
+const loginPage = new LoginPage();
+
+const HomePage = require('./../pages/home.page');
+
+const homePage = new HomePage();
+
 // @androidApp
-Then(/^I should see fahrenheit of (.*)$/, async (fahrenheit) => {
-    await celsiusToFahrenheitConvertorPage.verifyFahrenheitValue(fahrenheit);
+Then(/^I should see the home page$/, async () => {
+    await homePage.verifyLoginFirstTime()
 });
 
-// @androidBrowser @iosBrowser
-Then(/^I verify the title to be (.*)$/, async (title) => {
-    await googlePage.verifyTitle(title);
-});
-
-// @iosApp
-Then(/^I should see the general label$/, async () => {
-    await settingsPage.verifyGeneralLabel();
+// @androidApp
+Then(/^I should see an error message$/, async () => {
+    await loginPage.verifyErrorMessage()
 });
