@@ -50,13 +50,13 @@ class SignUpPage {
         await (await this.submitButton).click()
     }
 
-    async invalidsignUp(){
+    async invalidsignUp(email,password){
         await (await this.emailTextField).waitForDisplayed()
         await (await this.emailTextField).clearValue()
-        await (await this.emailTextField).addValue('mario.com')
+        await (await this.emailTextField).addValue(email)
         await (await this.passwordTextField).waitForDisplayed()
         await (await this.passwordTextField).clearValue()
-        await (await this.passwordTextField).addValue('smnmsmsms')
+        await (await this.passwordTextField).addValue(password)
         await (await this.firstNameTextField).waitForDisplayed()
         await (await this.firstNameTextField).clearValue()
         await (await this.firstNameTextField).addValue('12312312312')

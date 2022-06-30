@@ -1,11 +1,16 @@
 Feature: Sample feature file to illustrate app and browser tests
 
   @androidApp
-  Scenario: Login with invalid credentials
+  Scenario Outline: Login with invalid credentials
     Given Im on the login page
-    When I login with invalid credentials
+    When I login with invalid credentials <username> and <password>
     Then I should see an error message
-  
+
+    Examples:
+      | username  | password              | 
+      | james     | SuperSecretPassword!  |
+      | tomsmith  | SuperPassword!        |
+
   @androidApp
   Scenario: Login with valid credentials
     Given Im on the login page
